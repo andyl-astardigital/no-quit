@@ -5,6 +5,7 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
     <AssemblyName>NoQuit</AssemblyName>
     <RootNamespace>NoQuit</RootNamespace>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
