@@ -93,6 +93,18 @@ public class InstallerTests
     }
 
     [Fact]
+    public void Install_with_runImmediately_false_creates_task_but_does_not_run_it()
+    {
+        var r = MakeRig();
+
+        var result = r.Installer.Install(runImmediately: false);
+
+        result.Ok.Should().BeTrue();
+        r.Sched.Calls.Should().Contain(c => c.StartsWith("create:"));
+        r.Sched.Calls.Should().NotContain(c => c.StartsWith("run:"));
+    }
+
+    [Fact]
     public void Install_deletes_xml_file_even_on_failure()
     {
         var r = MakeRig();

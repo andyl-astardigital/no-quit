@@ -36,13 +36,14 @@ Auto-restarts on logon, workstation-unlock and resume-from-sleep.
 
 ## install
 
-Grab `NoQuit.exe` from [Releases](https://github.com/andyl-astardigital/no-quit/releases), drop it anywhere:
+Grab `NoQuit.exe` from [Releases](https://github.com/andyl-astardigital/no-quit/releases), drop it somewhere stable (e.g. `C:\Tools\NoQuit\`), and run it:
 
 ```powershell
-.\NoQuit.exe              # run once
-.\NoQuit.exe --install    # register auto-start (logon | unlock | resume)
-.\NoQuit.exe --uninstall  # remove
+.\NoQuit.exe              # runs, and silently registers auto-start
+.\NoQuit.exe --uninstall  # removes auto-start, kills running instance
 ```
+
+Auto-start triggers: logon, workstation-unlock, resume-from-sleep — registered at the exe's current path. Move the exe and run it again to re-point the task.
 
 Look for the green coffee cup in your tray. Left-click toggles, double-click opens the console, right-click for the menu.
 

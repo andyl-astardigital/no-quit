@@ -33,7 +33,7 @@ public sealed class Installer
         _taskName = taskName;
     }
 
-    public InstallResult Install()
+    public InstallResult Install(bool runImmediately = true)
     {
         string exePath = _process.CurrentExecutablePath;
         string user    = _env.FullUserId;
@@ -55,7 +55,7 @@ public sealed class Installer
                     Detail:  $"manual fallback:\nschtasks /Create /TN {_taskName} /XML \"{xmlPath}\" /F");
             }
 
-            _scheduler.Run(_taskName);
+            if (runImmediately) _scheduler.Run(_taskName);
 
             return new InstallResult(
                 Ok:      true,

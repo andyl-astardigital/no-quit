@@ -38,6 +38,10 @@ internal static class Program
             return 0;
         using var _ = lockHandle;
 
+        // Silently (re-)register the scheduled task at the current exe path on every launch.
+        // Idempotent — overwrites any prior registration. Best-effort: never blocks startup.
+        SilentlyRegisterAutoStart();
+
         // --- adapters --------------------------------------------------------
         IClock clock         = new SystemClock();
         IPowerApi power      = new Win32PowerApi();
@@ -116,6 +120,20 @@ internal static class Program
             DialogTone.Error);
     }
 
+    private static void SilentlyRegisterAutoStart()
+    {
+        try
+        {
+            var installer = new Installer(
+                new RealProcessApi(),
+                new RealEnvironment(),
+                new RealFileSystem(),
+                new SchtasksScheduler());
+            installer.Install(runImmediately: false);
+        }
+        catch { /* best effort */ }
+    }
+
     private static int RunInstaller(bool install)
     {
         var installer = new Installer(
@@ -137,9 +155,9 @@ internal static class Program
         dialog.Show(
             "[ no_quit :: usage ]",
             "tray-resident daemon that prevents Windows from sleeping.",
-            "NoQuit.exe              run the tray daemon\n" +
-            "NoQuit.exe --install    register auto-start (logon | unlock | resume)\n" +
-            "NoQuit.exe --uninstall  remove auto-start\n\n" +
+            "NoQuit.exe              run + auto-register (logon | unlock | resume)\n" +
+            "NoQuit.exe --install    re-register and launch via scheduler\n" +
+            "NoQuit.exe --uninstall  remove auto-start, kill running instance\n\n" +
             "hotkeys: [SPACE] toggle  [ESC] close  [CTRL+Q] kill",
             DialogTone.Info);
         return 0;
