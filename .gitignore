@@ -1,0 +1,50 @@
+# build output
+bin/
+obj/
+dist/
+out/
+publish/
+artifacts/
+
+# IDE
+.idea/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+# nuget
+*.nupkg
+*.snupkg
+.nuget/
+
+# test results
+TestResults/
+coverage.*.xml
+*.trx
+
+# resharper
+_ReSharper*/
+*.DotSettings.user
+
+# os crud
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# editor / tooling
+.claude/
+.cursor/
+.aider*
+.continue/
+CLAUDE.md
+AGENTS.md
+.copilot*
+.github_copilot*
+
+# misc
+*.log
+*.pidb
+*.bak
+*.tmp
