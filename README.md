@@ -36,16 +36,18 @@ Auto-restarts on logon, workstation-unlock and resume-from-sleep.
 
 ## install
 
-Grab `NoQuit.exe` from [Releases](https://github.com/andyl-astardigital/no-quit/releases), drop it somewhere stable (e.g. `C:\Tools\NoQuit\`), and run it:
+Grab the zip from [Releases](https://github.com/andyl-astardigital/no-quit/releases), extract it, then **right-click `Install.ps1` → Run with PowerShell** and accept the admin prompt. The installer clears the SmartScreen download flag, adds a Defender exclusion, copies the exe into your profile, and starts it.
+
+Prefer to do it by hand? The bare exe is self-sufficient:
 
 ```powershell
 .\NoQuit.exe              # runs, and silently registers auto-start
 .\NoQuit.exe --uninstall  # removes auto-start, kills running instance
 ```
 
-Auto-start triggers: logon, workstation-unlock, resume-from-sleep — registered at the exe's current path. Move the exe and run it again to re-point the task.
+Auto-start triggers: logon, workstation-unlock, resume-from-sleep — registered at the exe's current path.
 
-Look for the green coffee cup in your tray. Left-click toggles, double-click opens the console, right-click for the menu.
+Look for the green coffee cup in your tray. Left-click toggles, double-click opens the console, right-click for the menu. To remove: run `Uninstall.ps1`.
 
 Console hotkeys: `SPACE` toggle, `ESC` close, `CTRL+Q` kill daemon.
 

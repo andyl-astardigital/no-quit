@@ -1,0 +1,28 @@
+NoQuit - keeps Windows from sleeping
+====================================
+
+QUICK START
+-----------
+1. Extract this whole zip to a folder (you've probably already done that).
+2. Right-click  Install.ps1  ->  "Run with PowerShell".
+3. Click "Yes" on the admin prompt.
+   That's it - a green coffee cup appears in your system tray.
+
+The installer:
+  - clears the "downloaded from the internet" flag (stops the SmartScreen warning)
+  - copies NoQuit.exe into your user profile
+  - adds a Defender exclusion so it isn't flagged
+  - starts it, and sets it to auto-start on logon, unlock and wake-from-sleep
+
+USING IT
+--------
+  Left-click the tray icon   = pause / resume
+  Double-click               = open the console window
+  Right-click                = menu
+
+TO REMOVE
+---------
+  Right-click  Uninstall.ps1  ->  "Run with PowerShell".
+
+If "Run with PowerShell" is missing from the right-click menu, open PowerShell
+in this folder and run:   .\Install.ps1
